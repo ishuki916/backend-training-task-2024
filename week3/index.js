@@ -17,7 +17,7 @@ const members = [
 let purchaseRecords = [];
 
 function addPurchaseRecord(name, amount) {
-  if (!members.includes(name) || typeof amount != "number" || amount < 0) {
+  if (!members.includes(name) || isNaN(amount) || amount < 0) {
     console.log("輸入錯誤，請輸入有效的會員名稱和課程數量");
     return;
   }
