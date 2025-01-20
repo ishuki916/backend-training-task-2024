@@ -17,7 +17,7 @@ const members = [
 let purchaseRecords = [];
 
 function addPurchaseRecord(name, amount) {
-  if (!members.includes(name) || isNaN(amount) || amount < 0) {
+  if (!members.includes(name) || isNaN(amount) || amount <= 0) {
     console.log("輸入錯誤，請輸入有效的會員名稱和課程數量");
     return;
   }
@@ -86,3 +86,18 @@ calculateTotalPrice();
 // 新增函式 filterNoPurchaseMember，篩選特定條件的會員記錄。例如：未購買過課程的會員，並依序列出
 
 // 印出 console.log 文字為 未購買課程的會員有：.......
+
+function filterNoPurchaseMember() {
+  let purchasedMembers = [];
+  purchaseRecords.forEach((item) => {
+    purchasedMembers.push(item.name);
+  });
+  console.log(`有購買課程的成員${purchasedMembers}`);
+
+  let unPurchasedMembers = members.filter(
+    (item) => !purchasedMembers.includes(item)
+  );
+
+  console.log(`未購買課程的會員有：${unPurchasedMembers}`);
+}
+filterNoPurchaseMember();
